@@ -8,9 +8,23 @@
 			"homepage": "http://tomasvotruba.cz"
 		}
 	],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "knplabs/doctrine-behaviors",
+                "version": "dev-stable",
+                "source": {
+                    "url": "https://github.com/KnpLabs/DoctrineBehaviors",
+                    "type": "git",
+                    "reference": "3b9c1e4"
+                }
+            }
+        }
+    ],
 	"require": {
 		"php": ">=5.4",
-		"knplabs/doctrine-behaviors": "dev-master#3b9c1e4",
+		"knplabs/doctrine-behaviors": "dev-stable",
 		"kdyby/events": "~2.1"
 	},
 	"autoload": {
