@@ -20,12 +20,19 @@ Register extensions you need in `config.neon`:
 
 ```yaml
 extensions:
-	- Zenify\DoctrineBehaviors\DI\TranslatableExtension
+	translatable: Zenify\DoctrineBehaviors\DI\TranslatableExtension
 	- Zenify\DoctrineBehaviors\DI\TimestampableExtension
 ```
 
 
 ## Translatable
+
+Setup your translator locale callback in `config.neon`:
+
+```yaml
+translatable:
+	currentLocaleCallable: [@Translator, getLocale]
+```
 
 Place trait to your entity: 
 
@@ -33,12 +40,8 @@ Place trait to your entity:
 class Article 
 {
 	use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
-	
-	// invokes translation on method call, e.g. $article->getTitle()
-	public function __call($method, $arguments)
-	{
-		return $this->proxyCurrentLocaleTranslation($method, $arguments);
-	}
+	// returns translated property for $article->getTitle() or $article->title
+	use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable; 	
 
 }
 ```
