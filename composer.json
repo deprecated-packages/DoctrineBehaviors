@@ -10,7 +10,7 @@
 	],
 	"require": {
 		"php": ">=5.4",
-        "knplabs/doctrine-behaviors": "1.0.x-dev",
+		"knplabs/doctrine-behaviors": "1.0.x-dev",
 		"kdyby/events": "~2.1"
 	},
 	"autoload": {
