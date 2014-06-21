@@ -1,0 +1,20 @@
+{
+	"name": "zenify/doctrine-behaviors",
+	"description": "Port of KnpLabs/DoctrineBehaviors to Nette",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Tomáš Votruba",
+			"homepage": "http://tomasvotruba.cz"
+		}
+	],
+	"require": {
+		"php": ">=5.4",
+		"kdyby/events": "@dev"
+	},
+	"autoload": {
+		"psr-0": {
+			"Zenify\\": "src/"
+		}
+	}
+}
