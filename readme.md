@@ -2,6 +2,18 @@
 
 Port of [KnpLabs/DoctrineBehaviors](https://github.com/KnpLabs/DoctrineBehaviors) to Nette
 
+Supports behaviors:
+
+- Blameable
+- Geocodable
+- Loggable
+- Sluggable
+- SoftDeletable
+- Transltable
+- Timestampable
+
+For implementation to entities, check [tests](https://github.com/KnpLabs/DoctrineBehaviors/tree/master/tests/fixtures/BehaviorFixtures/ORM).
+
 
 ## Requirements
 
@@ -80,8 +92,3 @@ class Article
 
 }
 ```
-
-
-## Others? Send PR!
-
-Other traits were not tested yet. Do you use them? If so, send us PR based on current extensions.
