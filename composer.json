@@ -1,7 +1,7 @@
 {
 	"name": "zenify/doctrine-behaviors",
 	"description": "Port of KnpLabs/DoctrineBehaviors to Nette",
-	"license": "MIT",
+	"license": "MIT",+
 	"authors": [
 		{
 			"name": "Tomáš Votruba",

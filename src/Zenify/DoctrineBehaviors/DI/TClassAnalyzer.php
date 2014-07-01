@@ -7,6 +7,8 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
+use Nette\DI\ContainerBuilder;
+use Nette\DI\ContainerExtension;
 
 
 trait TClassAnalyzer
@@ -17,6 +19,8 @@ trait TClassAnalyzer
 	 */
 	private function getClassAnalyzer()
 	{
+		/** @var ContainerExtension $this */
+		/** @var ContainerBuilder $builder */
 		$builder = $this->getContainerBuilder();
 
 		if ($builder->hasDefinition('knp.classAnalyzer')) {
