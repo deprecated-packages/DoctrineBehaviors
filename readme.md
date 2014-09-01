@@ -44,7 +44,7 @@ Setup your translator locale callback in `config.neon`:
 translatable:
 	currentLocaleCallable: [@Translator, getLocale]
 	# or
-	currentLocaleCallable: [@Translator] # __invoke will be called
+	currentLocaleCallable: @Translator # __invoke will be called on @Translator service
 	# or
 	currentLocaleCallable: Translator\Resolver # service will be created and  __invoke will be called
 ```
