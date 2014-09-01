@@ -1,0 +1,27 @@
+services:
+	- ZenifyTests\DoctrineBehaviorsTests\Loggable\DummyLogger
+	- ZenifyTests\DoctrineBehaviorsTests\Translatable\LocaleResolver
+
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+
+	- Zenify\DoctrineBehaviors\DI\BlameableExtension
+	- Zenify\DoctrineBehaviors\DI\GeocodableExtension
+	- Zenify\DoctrineBehaviors\DI\LoggableExtension
+	- Zenify\DoctrineBehaviors\DI\SluggableExtension
+	- Zenify\DoctrineBehaviors\DI\SoftDeletableExtension
+	- Zenify\DoctrineBehaviors\DI\TimestampableExtension
+	translatable: Zenify\DoctrineBehaviors\DI\TranslatableExtension
+
+
+doctrine:
+	driver: pdo_sqlite
+	memory: true
+
+
+translatable:
+	currentLocaleCallable:
