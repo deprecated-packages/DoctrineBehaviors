@@ -1,5 +1,9 @@
 # Zenify/DoctrineBehaviors
 
+[![Build Status](https://travis-ci.org/Zenify/DoctrineBehaviors.svg?branch=master)](https://travis-ci.org/Zenify/DoctrineBehaviors)
+[![Downloads this Month](https://img.shields.io/packagist/dm/zenify/doctrine-behaviors.svg)](https://packagist.org/packages/zenify/doctrine-behaviors)
+
+
 Port of [KnpLabs/DoctrineBehaviors](https://github.com/KnpLabs/DoctrineBehaviors) to Nette
 
 Supports behaviors:
