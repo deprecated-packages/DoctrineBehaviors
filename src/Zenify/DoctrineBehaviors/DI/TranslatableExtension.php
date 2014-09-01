@@ -32,13 +32,11 @@ class TranslatableExtension extends BehaviorExtension
 		$this->validateConfig($config);
 		$builder = $this->getContainerBuilder();
 
-		$currentLocaleCallable = $this->buildDefinition($config['currentLocaleCallable']);
-
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass('Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
-				$currentLocaleCallable ? '@' . $currentLocaleCallable->getClass() : $currentLocaleCallable,
+				$config['currentLocaleCallable'],
 				$config['translatableTrait'],
 				$config['translationTrait'],
 				$config['translatableFetchMode'],
@@ -56,7 +54,7 @@ class TranslatableExtension extends BehaviorExtension
 	private function validateConfig($config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
-		Validators::assertField($config, 'currentLocaleCallable', NULL | 'type');
+		Validators::assertField($config, 'currentLocaleCallable', NULL | 'array');
 		Validators::assertField($config, 'translatableTrait', 'type');
 		Validators::assertField($config, 'translationTrait', 'type');
 		Validators::assertField($config, 'translatableFetchMode', 'string');
