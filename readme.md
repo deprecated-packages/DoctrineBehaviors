@@ -15,11 +15,6 @@ Supports behaviors:
 For implementation to entities, check [tests](https://github.com/KnpLabs/DoctrineBehaviors/tree/master/tests/fixtures/BehaviorFixtures/ORM).
 
 
-## Requirements
-
-See section `require` in [composer.json](composer.json).
-
-
 ## Installation
 
 The best way to install is using [Composer](http://getcomposer.org/).
@@ -44,16 +39,20 @@ Setup your translator locale callback in `config.neon`:
 ```yaml
 translatable:
 	currentLocaleCallable: [@Translator, getLocale]
+	# or
+	currentLocaleCallable: [@Translator] # __invoke will be called
+	# or
+	currentLocaleCallable: Translator\Resolver # service will be created and  __invoke will be called
 ```
 
-Place trait to your entity: 
+Place trait to your entity:
 
 ```php
-class Article 
+class Article
 {
 	use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 	// returns translated property for $article->getTitle() or $article->title
-	use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable; 	
+	use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
 
 }
 ```
@@ -64,10 +63,10 @@ And it's translation entity:
 class ArticleTranslation
 {
 	use Knp\DoctrineBehaviors\Model\Translatable\Translation;
-	
-	/** 
+
+	/**
 	 * @ORM\Column(type="string")
-	 * @var string 
+	 * @var string
 	 */
 	public $title;
 
@@ -86,7 +85,7 @@ For deeper knowledge see test for:
 Place trait to your entity to ad `$createdAt` and `$updatedAt` properties:
 
 ```php
-class Article 
+class Article
 {
 	use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 
