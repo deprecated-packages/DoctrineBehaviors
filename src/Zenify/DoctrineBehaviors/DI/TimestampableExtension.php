@@ -8,14 +8,13 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
-use Nette\DI\CompilerExtension;
+use Nette\Utils\AssertionException;
+use Nette\Utils\Validators;
 
 
-class TimestampableExtension extends CompilerExtension
+class TimestampableExtension extends BehaviorExtension
 {
-	use TClassAnalyzer;
-
-	/** @var [] */
+	/** @var array */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'trait' => 'Knp\DoctrineBehaviors\Model\Timestampable\Timestampable'
@@ -25,6 +24,7 @@ class TimestampableExtension extends CompilerExtension
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
+		$this->validateConfig($config);
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
@@ -35,6 +35,17 @@ class TimestampableExtension extends CompilerExtension
 			])
 			->setAutowired(FALSE)
 			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+	}
+
+
+	/**
+	 * @param array $config
+	 * @throws AssertionException
+	 */
+	private function validateConfig($config)
+	{
+		Validators::assertField($config, 'isRecursive', 'bool');
+		Validators::assertField($config, 'trait', 'type');
 	}
 
 }

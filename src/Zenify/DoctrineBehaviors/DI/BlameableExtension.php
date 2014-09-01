@@ -7,19 +7,19 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Nette\DI\CompilerExtension;
+use Nette;
 use Kdyby;
+use Nette\Utils\AssertionException;
+use Nette\Utils\Validators;
 
 
-class BlameableExtension extends CompilerExtension
+class BlameableExtension extends BehaviorExtension
 {
-	use TClassAnalyzer;
-
-	/** @var [] */
+	/** @var array */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'trait' => 'Knp\DoctrineBehaviors\Model\Blameable\Blameable',
-		'userCallable' => 'Knp\DoctrineBehaviors\ORM\Blameable\UserCallable',
+		'userCallable' => 'Zenify\DoctrineBehaviors\Blameable\UserCallable',
 		'userEntity' => NULL
 	];
 
@@ -27,18 +27,34 @@ class BlameableExtension extends CompilerExtension
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
+		$this->validateConfig($config);
 		$builder = $this->getContainerBuilder();
+
+		$userCallable = $this->buildDefinition($config['userCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass('Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait'],
-				$config['userCallable'],
+				'@' . $userCallable->getClass(),
 				$config['userEntity']
 			])
 			->setAutowired(FALSE)
 			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+	}
+
+
+	/**
+	 * @param array $config
+	 * @throws AssertionException
+	 */
+	private function validateConfig($config)
+	{
+		Validators::assertField($config, 'isRecursive', 'bool');
+		Validators::assertField($config, 'trait', 'type');
+		Validators::assertField($config, 'userCallable', 'string');
+		Validators::assertField($config, 'userEntity', 'null|string');
 	}
 
 }

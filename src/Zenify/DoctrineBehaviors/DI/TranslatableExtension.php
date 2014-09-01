@@ -8,15 +8,14 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
-use Nette\DI\CompilerExtension;
-use Nette\DI\Statement;
+use Nette;
+use Nette\Utils\AssertionException;
+use Nette\Utils\Validators;
 
 
-class TranslatableExtension extends CompilerExtension
+class TranslatableExtension extends BehaviorExtension
 {
-	use TClassAnalyzer;
-
-	/** @var [] */
+	/** @var array */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'currentLocaleCallable' => NULL,
@@ -30,13 +29,16 @@ class TranslatableExtension extends CompilerExtension
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
+		$this->validateConfig($config);
 		$builder = $this->getContainerBuilder();
+
+		$currentLocaleCallable = $this->buildDefinition($config['currentLocaleCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass('Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
-				$config['currentLocaleCallable'],
+				$currentLocaleCallable ? '@' . $currentLocaleCallable->getClass() : $currentLocaleCallable,
 				$config['translatableTrait'],
 				$config['translationTrait'],
 				$config['translatableFetchMode'],
@@ -44,6 +46,21 @@ class TranslatableExtension extends CompilerExtension
 			])
 			->setAutowired(FALSE)
 			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+	}
+
+
+	/**
+	 * @param array $config
+	 * @throws AssertionException
+	 */
+	private function validateConfig($config)
+	{
+		Validators::assertField($config, 'isRecursive', 'bool');
+		Validators::assertField($config, 'currentLocaleCallable', NULL | 'type');
+		Validators::assertField($config, 'translatableTrait', 'type');
+		Validators::assertField($config, 'translationTrait', 'type');
+		Validators::assertField($config, 'translatableFetchMode', 'string');
+		Validators::assertField($config, 'translationFetchMode', 'string');
 	}
 
 }

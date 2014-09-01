@@ -8,24 +8,23 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
-use Nette\DI\CompilerExtension;
+use Nette\Utils\AssertionException;
+use Nette\Utils\Validators;
 
 
-class SluggableExtension extends CompilerExtension
+class SluggableExtension extends BehaviorExtension
 {
-	use TClassAnalyzer;
-
-	/** @var [] */
+	/** @var array */
 	protected $default = [
 		'isRecursive' => TRUE,
-		'trait' => 'Knp\DoctrineBehaviors\Model\Sluggable\Sluggable',
-		'geolocationCallable' => NULL
+		'trait' => 'Knp\DoctrineBehaviors\Model\Sluggable\Sluggable'
 	];
 
 
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
+		$this->validateConfig($config);
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
@@ -36,6 +35,17 @@ class SluggableExtension extends CompilerExtension
 			])
 			->setAutowired(FALSE)
 			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+	}
+
+
+	/**
+	 * @param $config
+	 * @throws AssertionException
+	 */
+	private function validateConfig($config)
+	{
+		Validators::assertField($config, 'isRecursive', 'bool');
+		Validators::assertField($config, 'trait', 'type');
 	}
 
 }

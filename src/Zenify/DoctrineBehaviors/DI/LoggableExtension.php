@@ -7,34 +7,48 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Nette\DI\CompilerExtension;
 use Kdyby;
+use Nette;
+use Nette\Utils\AssertionException;
+use Nette\Utils\Validators;
 
 
-class LoggableExtension extends CompilerExtension
+class LoggableExtension extends BehaviorExtension
 {
-	use TClassAnalyzer;
-
-	/** @var [] */
+	/** @var array */
 	protected $default = [
 		'isRecursive' => TRUE,
-		'loggerCallable' => 'Knp\DoctrineBehaviors\ORM\Loggable\LoggerCallable'
+		'loggerCallable' => 'Zenify\DoctrineBehaviors\Loggable\LoggerCallable'
 	];
 
 
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
+		$this->validateConfig($config);
 		$builder = $this->getContainerBuilder();
+
+		$loggerCallable = $this->buildDefinition($config['loggerCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass('Knp\DoctrineBehaviors\ORM\Loggable\LoggableListener', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
-				$config['loggerCallable']
+				'@' . $loggerCallable->getClass()
 			])
 			->setAutowired(FALSE)
 			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+	}
+
+
+	/**
+	 * @param array $config
+	 * @throws AssertionException
+	 */
+	private function validateConfig($config)
+	{
+		Validators::assertField($config, 'isRecursive', 'bool');
+		Validators::assertField($config, 'loggerCallable', 'type');
 	}
 
 }
