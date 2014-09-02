@@ -23,8 +23,19 @@ For implementation to entities, check [tests](https://github.com/KnpLabs/Doctrin
 
 The best way to install is using [Composer](http://getcomposer.org/).
 
+Add to your `composer.json`:
+
+```yaml
+"require": {
+	"zenify/doctrine-behaviors": "~1.1",
+	"knplabs/doctrine-behaviors": "@dev"
+}
+```
+
+and run:
+
 ```sh
-$ composer require zenify/doctrine-behaviors:@dev
+$ composer update
 ```
 
 Register extensions you need in `config.neon`:
@@ -43,10 +54,6 @@ Setup your translator locale callback in `config.neon`:
 ```yaml
 translatable:
 	currentLocaleCallable: [@Translator, getLocale]
-	# or
-	currentLocaleCallable: @Translator # __invoke will be called on @Translator service
-	# or
-	currentLocaleCallable: Translator\Resolver # service will be created and  __invoke will be called
 ```
 
 Place trait to your entity:
