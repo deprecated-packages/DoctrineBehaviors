@@ -51,7 +51,7 @@ class TranslatableExtension extends BehaviorExtension
 	 * @param array $config
 	 * @throws AssertionException
 	 */
-	private function validateConfig($config)
+	protected function validateConfig($config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'currentLocaleCallable', NULL | 'array');
