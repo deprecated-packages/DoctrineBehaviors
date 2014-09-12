@@ -29,7 +29,7 @@ class TranslatableExtension extends BehaviorExtension
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
-		$this->validateConfig($config);
+		$this->validateConfigTypes($config);
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
@@ -48,10 +48,9 @@ class TranslatableExtension extends BehaviorExtension
 
 
 	/**
-	 * @param array $config
 	 * @throws AssertionException
 	 */
-	protected function validateConfig($config)
+	protected function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'currentLocaleCallable', NULL | 'array');

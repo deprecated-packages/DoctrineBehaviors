@@ -24,7 +24,7 @@ class SluggableExtension extends BehaviorExtension
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
-		$this->validateConfig($config);
+		$this->validateConfigTypes($config);
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
@@ -39,10 +39,9 @@ class SluggableExtension extends BehaviorExtension
 
 
 	/**
-	 * @param $config
 	 * @throws AssertionException
 	 */
-	protected function validateConfig($config)
+	protected function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');

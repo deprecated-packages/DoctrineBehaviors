@@ -25,7 +25,7 @@ class LoggableExtension extends BehaviorExtension
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
-		$this->validateConfig($config);
+		$this->validateConfigTypes($config);
 		$builder = $this->getContainerBuilder();
 
 		$loggerCallable = $this->buildDefinition($config['loggerCallable']);
@@ -42,10 +42,9 @@ class LoggableExtension extends BehaviorExtension
 
 
 	/**
-	 * @param array $config
 	 * @throws AssertionException
 	 */
-	protected function validateConfig($config)
+	protected function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'loggerCallable', 'type');
