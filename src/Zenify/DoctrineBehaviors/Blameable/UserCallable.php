@@ -13,7 +13,10 @@ use Nette\Security\User;
 
 class UserCallable extends Nette\Object
 {
-	/** @var User */
+
+	/**
+	 * @var User
+	 */
 	private $user;
 
 

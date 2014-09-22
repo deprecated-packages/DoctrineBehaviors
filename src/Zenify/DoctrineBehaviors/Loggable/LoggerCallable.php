@@ -12,7 +12,10 @@ use Nette;
 
 class LoggerCallable extends Nette\Object
 {
-	/** @var Logger */
+
+	/**
+	 * @var Logger
+	 */
 	private $logger;
 
 

@@ -27,11 +27,6 @@ $_SERVER['REQUEST_TIME'] = 1234567890;
 $_ENV = $_GET = $_POST = array();
 
 
-function run(Tester\TestCase $testCase) {
-	$testCase->run(isset($_SERVER['argv'][1]) ? $_SERVER['argv'][1] : NULL);
-}
-
-
 $configurator = new Nette\Configurator;
 $configurator->setTempDirectory(TEMP_DIR);
 $configurator->addConfig(__DIR__ . '/config/default.neon');

@@ -8,6 +8,9 @@
 namespace Zenify\DoctrineBehaviors\Entities\Attributes;
 
 
+/**
+ * @method Translatable proxyCurrentLocaleTranslation($method, $args = [])
+ */
 trait Translatable
 {
 

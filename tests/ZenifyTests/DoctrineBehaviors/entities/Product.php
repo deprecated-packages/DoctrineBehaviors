@@ -17,6 +17,7 @@ use Nette;
  */
 class Product extends Nette\Object
 {
+
 	use Timestampable;
 
 	/**
