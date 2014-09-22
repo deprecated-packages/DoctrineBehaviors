@@ -22,7 +22,6 @@ abstract class BehaviorExtension extends CompilerExtension
 	 */
 	protected function getClassAnalyzer()
 	{
-		/** @var CompilerExtension $this */
 		/** @var ContainerBuilder $builder */
 		$builder = $this->getContainerBuilder();
 
@@ -52,7 +51,7 @@ abstract class BehaviorExtension extends CompilerExtension
 			is_string($value) ? new Statement($value) : $value
 		));
 
-		list($resolverClass) = (array)$builder->normalizeEntity($definition->getFactory()->getEntity());
+		list($resolverClass) = (array) $builder->normalizeEntity($definition->getFactory()->getEntity());
 		if (class_exists($resolverClass)) {
 			$definition->setClass($resolverClass);
 		}

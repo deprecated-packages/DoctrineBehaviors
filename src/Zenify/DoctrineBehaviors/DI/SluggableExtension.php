@@ -14,7 +14,10 @@ use Nette\Utils\Validators;
 
 class SluggableExtension extends BehaviorExtension
 {
-	/** @var array */
+
+	/**
+	 * @var array
+	 */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'trait' => 'Knp\DoctrineBehaviors\Model\Sluggable\Sluggable'
@@ -28,7 +31,7 @@ class SluggableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Sluggable\SluggableListener', [
+			->setClass('Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']

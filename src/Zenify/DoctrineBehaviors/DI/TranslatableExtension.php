@@ -15,7 +15,10 @@ use Nette\Utils\Validators;
 
 class TranslatableExtension extends BehaviorExtension
 {
-	/** @var array */
+
+	/**
+	 * @var array
+	 */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'currentLocaleCallable' => NULL,
@@ -33,7 +36,7 @@ class TranslatableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener', [
+			->setClass('Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['currentLocaleCallable'],

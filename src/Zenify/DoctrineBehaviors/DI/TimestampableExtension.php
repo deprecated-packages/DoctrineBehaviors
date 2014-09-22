@@ -14,7 +14,10 @@ use Nette\Utils\Validators;
 
 class TimestampableExtension extends BehaviorExtension
 {
-	/** @var array */
+
+	/**
+	 * @var array
+	 */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'trait' => 'Knp\DoctrineBehaviors\Model\Timestampable\Timestampable'
@@ -28,7 +31,7 @@ class TimestampableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableListener', [
+			->setClass('Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']

@@ -1,8 +1,6 @@
 <?php
 
 /**
- * Test: Zenify\DoctrineBehaviors\Extensions.
- *
  * @testCase
  */
 
@@ -19,18 +17,23 @@ $container = require_once __DIR__ . '/../bootstrap.php';
 
 class ExtensionTest extends TestCase
 {
-	/** @var Nette\DI\Container */
+
+	/**
+	 * @var Nette\DI\Container
+	 */
 	private $container;
 
-	/** @var array */
+	/**
+	 * @var array
+	 */
 	private $listeners = [
-		'Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener',
-		'Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableListener',
-		'Knp\DoctrineBehaviors\ORM\Loggable\LoggableListener',
-		'Knp\DoctrineBehaviors\ORM\Sluggable\SluggableListener',
-		'Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableListener',
-		'Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableListener',
-		'Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener'
+		'Knp\DoctrineBehaviors\ORM\Blameable\BlameableSubscriber',
+		'Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableSubscriber',
+		'Knp\DoctrineBehaviors\ORM\Loggable\LoggableSubscriber',
+		'Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber',
+		'Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber',
+		'Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber',
+		'Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber'
 	];
 
 
@@ -60,4 +63,4 @@ class ExtensionTest extends TestCase
 }
 
 
-\run(new ExtensionTest($container));
+(new ExtensionTest($container))->run();

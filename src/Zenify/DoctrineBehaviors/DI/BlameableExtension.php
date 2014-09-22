@@ -15,7 +15,10 @@ use Nette\Utils\Validators;
 
 class BlameableExtension extends BehaviorExtension
 {
-	/** @var array */
+
+	/**
+	 * @var array
+	 */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'trait' => 'Knp\DoctrineBehaviors\Model\Blameable\Blameable',
@@ -33,7 +36,7 @@ class BlameableExtension extends BehaviorExtension
 		$userCallable = $this->buildDefinition($config['userCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener', [
+			->setClass('Knp\DoctrineBehaviors\ORM\Blameable\BlameableSubscriber', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait'],

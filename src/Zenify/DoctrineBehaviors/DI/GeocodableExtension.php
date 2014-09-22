@@ -14,7 +14,10 @@ use Nette\Utils\Validators;
 
 class GeocodableExtension extends BehaviorExtension
 {
-	/** @var array */
+
+	/**
+	 * @var array
+	 */
 	protected $default = [
 		'isRecursive' => TRUE,
 		'trait' => 'Knp\DoctrineBehaviors\Model\Geocodable\Geocodable',
@@ -31,7 +34,7 @@ class GeocodableExtension extends BehaviorExtension
 		$geolocationCallable = $this->buildDefinition($config['geolocationCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableListener', [
+			->setClass('Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableSubscriber', [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait'],
