@@ -57,7 +57,7 @@ class ExtensionTest extends TestCase
 			}
 		}
 
-		Assert::equal(15, $count);
+		Assert::equal(16, $count);
 	}
 
 }

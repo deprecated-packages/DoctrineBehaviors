@@ -14,6 +14,6 @@ interface Logger
 	/**
 	 * @param mixed $message
 	 */
-	public function process($message);
+	function process($message);
 
 }

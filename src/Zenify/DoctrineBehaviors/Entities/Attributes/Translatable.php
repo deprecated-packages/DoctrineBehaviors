@@ -20,7 +20,7 @@ trait Translatable
 	 */
 	public function &__get($name)
 	{
-		if (property_exists($this, $name) == FALSE && method_exists($this, 'get' . ucfirst($name)) == FALSE) {
+		if (property_exists($this, $name) === FALSE && method_exists($this, 'get' . ucfirst($name)) === FALSE) {
 			$var = $this->proxyCurrentLocaleTranslation('get' . ucfirst($name));
 			return $var;
 		}
