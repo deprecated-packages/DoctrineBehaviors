@@ -22,21 +22,11 @@ For implementation to entities, check [tests](https://github.com/KnpLabs/Doctrin
 
 ## Installation
 
-The best way to install is using [Composer](http://getcomposer.org/).
-
-Add to your `composer.json`:
-
-```yaml
-"require": {
-	"zenify/doctrine-behaviors": "~1.1",
-	"knplabs/doctrine-behaviors": "@dev"
-}
-```
-
-and run:
+To get the lastest version run [Composer](http://getcomposer.org/) commands:
 
 ```sh
-$ composer update
+$ composer require "knplabs/doctrine-behaviors:@dev"
+$ composer require zenify/doctrine-behaviors
 ```
 
 Register extensions you need in `config.neon`:
