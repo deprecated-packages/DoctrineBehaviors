@@ -7,8 +7,8 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Nette;
 use Kdyby;
+use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
