@@ -3,10 +3,7 @@
 	"description": "Port of KnpLabs/DoctrineBehaviors to Nette",
 	"license": "MIT",
 	"authors": [
-		{
-			"name": "Tomáš Votruba",
-			"homepage": "http://tomasvotruba.cz"
-		}
+		{ "name": "Tomáš Votruba", "homepage": "http://tomasvotruba.cz" }
 	],
 	"require": {
 		"php": ">=5.4",
@@ -29,8 +26,8 @@
 		"jakub-onderka/php-parallel-lint": "~0.8"
 	},
 	"autoload": {
-		"psr-0": {
-			"Zenify\\": "src/"
+		"psr-4": {
+			"Zenify\\DoctrineBehaviors\\": "src/"
 		}
 	}
 }
