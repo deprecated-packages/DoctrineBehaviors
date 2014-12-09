@@ -1,6 +1,6 @@
 <?php
 
-namespace ZenifyTests\DoctrineBehaviorsTests\Translatable;
+namespace ZenifyTests\DoctrineBehaviors\Translatable;
 
 use Nette;
 

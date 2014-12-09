@@ -1,8 +1,9 @@
 # Zenify/DoctrineBehaviors
 
-[![Build Status](https://travis-ci.org/Zenify/DoctrineBehaviors.svg?branch=master)](https://travis-ci.org/Zenify/DoctrineBehaviors)
-[![Downloads this Month](https://img.shields.io/packagist/dm/zenify/doctrine-behaviors.svg)](https://packagist.org/packages/zenify/doctrine-behaviors)
-[![Latest stable](https://img.shields.io/packagist/v/zenify/doctrine-behaviors.svg)](https://packagist.org/packages/zenify/doctrine-behaviors)
+[![Build Status](https://img.shields.io/travis/Zenify/DoctrineBehaviors.svg?style=flat-square)](https://travis-ci.org/Zenify/DoctrineBehaviors)
+[![Quality Score](https://img.shields.io/scrutinizer/g/Zenify/DoctrineBehaviors.svg?style=flat-square)](https://scrutinizer-ci.com/g/Zenify/DoctrineBehaviors)
+[![Downloads this Month](https://img.shields.io/packagist/dm/zenify/doctrine-behaviors.svg?style=flat-square)](https://packagist.org/packages/zenify/doctrine-behaviors)
+[![Latest stable](https://img.shields.io/packagist/v/zenify/doctrine-behaviors.svg?style=flat-square)](https://packagist.org/packages/zenify/doctrine-behaviors)
 
 
 Port of [KnpLabs/DoctrineBehaviors](https://github.com/KnpLabs/DoctrineBehaviors) to Nette
@@ -22,10 +23,9 @@ For implementation to entities, check [tests](https://github.com/KnpLabs/Doctrin
 
 ## Installation
 
-To get the lastest version run [Composer](http://getcomposer.org/) commands:
+Install the latest version via Composer:
 
 ```sh
-$ composer require "knplabs/doctrine-behaviors:@dev"
 $ composer require zenify/doctrine-behaviors
 ```
 
@@ -52,6 +52,7 @@ Place trait to your entity:
 ```php
 class Article
 {
+	
 	use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 	// returns translated property for $article->getTitle() or $article->title
 	use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
@@ -59,11 +60,12 @@ class Article
 }
 ```
 
-And it's translation entity:
+And its translation entity:
 
 ```php
 class ArticleTranslation
 {
+	
 	use Knp\DoctrineBehaviors\Model\Translatable\Translation;
 
 	/**
@@ -89,6 +91,7 @@ Place trait to your entity to ad `$createdAt` and `$updatedAt` properties:
 ```php
 class Article
 {
+	
 	use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 
 }

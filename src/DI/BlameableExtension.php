@@ -8,9 +8,12 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Knp\DoctrineBehaviors\Model\Blameable\Blameable;
+use Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener;
 use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
+use Zenify\DoctrineBehaviors\Blameable\UserCallable;
 
 
 class BlameableExtension extends BehaviorExtension
@@ -19,10 +22,10 @@ class BlameableExtension extends BehaviorExtension
 	/**
 	 * @var array
 	 */
-	protected $default = [
+	private $default = [
 		'isRecursive' => TRUE,
-		'trait' => 'Knp\DoctrineBehaviors\Model\Blameable\Blameable',
-		'userCallable' => 'Zenify\DoctrineBehaviors\Blameable\UserCallable',
+		'trait' => Blameable::class,
+		'userCallable' => UserCallable::class,
 		'userEntity' => NULL
 	];
 
@@ -36,7 +39,7 @@ class BlameableExtension extends BehaviorExtension
 		$userCallable = $this->buildDefinition($config['userCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Blameable\BlameableSubscriber', [
+			->setClass(BlameableListener::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait'],
@@ -51,7 +54,7 @@ class BlameableExtension extends BehaviorExtension
 	/**
 	 * @throws AssertionException
 	 */
-	protected function validateConfigTypes(array $config)
+	private function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');

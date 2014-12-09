@@ -8,9 +8,11 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Knp\DoctrineBehaviors\ORM\Loggable\LoggableListener;
 use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
+use Zenify\DoctrineBehaviors\Loggable\LoggerCallable;
 
 
 class LoggableExtension extends BehaviorExtension
@@ -19,9 +21,9 @@ class LoggableExtension extends BehaviorExtension
 	/**
 	 * @var array
 	 */
-	protected $default = [
+	private $default = [
 		'isRecursive' => TRUE,
-		'loggerCallable' => 'Zenify\DoctrineBehaviors\Loggable\LoggerCallable'
+		'loggerCallable' => LoggerCallable::class
 	];
 
 
@@ -34,7 +36,7 @@ class LoggableExtension extends BehaviorExtension
 		$loggerCallable = $this->buildDefinition($config['loggerCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Loggable\LoggableSubscriber', [
+			->setClass(LoggableListener::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				'@' . $loggerCallable->getClass()
@@ -47,7 +49,7 @@ class LoggableExtension extends BehaviorExtension
 	/**
 	 * @throws AssertionException
 	 */
-	protected function validateConfigTypes(array $config)
+	private function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'loggerCallable', 'type');

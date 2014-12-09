@@ -8,9 +8,12 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Knp\DoctrineBehaviors\Model\Translatable\Translation;
+use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener;
 use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
+use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
 
 
 class TranslatableExtension extends BehaviorExtension
@@ -19,11 +22,11 @@ class TranslatableExtension extends BehaviorExtension
 	/**
 	 * @var array
 	 */
-	protected $default = [
+	private $default = [
 		'isRecursive' => TRUE,
 		'currentLocaleCallable' => NULL,
-		'translatableTrait' => 'Knp\DoctrineBehaviors\Model\Translatable\Translatable',
-		'translationTrait' => 'Knp\DoctrineBehaviors\Model\Translatable\Translation',
+		'translatableTrait' => Translatable::class,
+		'translationTrait' => Translation::class,
 		'translatableFetchMode' => 'LAZY',
 		'translationFetchMode' => 'LAZY',
 	];
@@ -36,7 +39,7 @@ class TranslatableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber', [
+			->setClass(TranslatableListener::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['currentLocaleCallable'],
@@ -53,7 +56,7 @@ class TranslatableExtension extends BehaviorExtension
 	/**
 	 * @throws AssertionException
 	 */
-	protected function validateConfigTypes(array $config)
+	private function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'currentLocaleCallable', NULL | 'array');

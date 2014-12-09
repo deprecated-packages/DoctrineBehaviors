@@ -8,6 +8,8 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Knp\DoctrineBehaviors\Model\SoftDeletable\SoftDeletable;
+use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableListener;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
@@ -18,9 +20,9 @@ class SoftDeletableExtension extends BehaviorExtension
 	/**
 	 * @var array
 	 */
-	protected $default = [
+	private $default = [
 		'isRecursive' => TRUE,
-		'trait' => 'Knp\DoctrineBehaviors\Model\SoftDeletable\SoftDeletable'
+		'trait' => SoftDeletable::class
 	];
 
 
@@ -31,7 +33,7 @@ class SoftDeletableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber', [
+			->setClass(SoftDeletableListener::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']
@@ -44,7 +46,7 @@ class SoftDeletableExtension extends BehaviorExtension
 	/**
 	 * @throws AssertionException
 	 */
-	protected function validateConfigTypes(array $config)
+	private function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');

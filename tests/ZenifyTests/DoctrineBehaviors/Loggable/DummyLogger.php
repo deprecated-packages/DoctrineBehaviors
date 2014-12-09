@@ -1,6 +1,6 @@
 <?php
 
-namespace ZenifyTests\DoctrineBehaviorsTests\Loggable;
+namespace ZenifyTests\DoctrineBehaviors\Loggable;
 
 use Zenify\DoctrineBehaviors\Loggable\Logger;
 

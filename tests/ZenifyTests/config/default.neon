@@ -1,6 +1,6 @@
 services:
-	- ZenifyTests\DoctrineBehaviorsTests\Loggable\DummyLogger
-	- ZenifyTests\DoctrineBehaviorsTests\Translatable\LocaleResolver
+	- ZenifyTests\DoctrineBehaviors\Loggable\DummyLogger
+	- ZenifyTests\DoctrineBehaviors\Translatable\LocaleResolver
 
 
 extensions:

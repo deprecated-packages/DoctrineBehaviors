@@ -8,6 +8,8 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Knp\DoctrineBehaviors\Model\Geocodable\Geocodable;
+use Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableListener;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
@@ -18,9 +20,9 @@ class GeocodableExtension extends BehaviorExtension
 	/**
 	 * @var array
 	 */
-	protected $default = [
+	private $default = [
 		'isRecursive' => TRUE,
-		'trait' => 'Knp\DoctrineBehaviors\Model\Geocodable\Geocodable',
+		'trait' => Geocodable::class,
 		'geolocationCallable' => NULL
 	];
 
@@ -34,7 +36,7 @@ class GeocodableExtension extends BehaviorExtension
 		$geolocationCallable = $this->buildDefinition($config['geolocationCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableSubscriber', [
+			->setClass(GeocodableListener::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait'],
@@ -48,7 +50,7 @@ class GeocodableExtension extends BehaviorExtension
 	/**
 	 * @throws AssertionException
 	 */
-	protected function validateConfigTypes(array $config)
+	private function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');

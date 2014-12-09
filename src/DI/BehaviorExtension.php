@@ -7,9 +7,9 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
+use Knp\DoctrineBehaviors\Reflection\ClassAnalyzer;
 use Nette\DI\Compiler;
 use Nette\DI\CompilerExtension;
-use Nette\DI\ContainerBuilder;
 use Nette\DI\ServiceDefinition;
 use Nette\DI\Statement;
 
@@ -22,7 +22,6 @@ abstract class BehaviorExtension extends CompilerExtension
 	 */
 	protected function getClassAnalyzer()
 	{
-		/** @var ContainerBuilder $builder */
 		$builder = $this->getContainerBuilder();
 
 		if ($builder->hasDefinition('knp.classAnalyzer')) {
@@ -30,7 +29,7 @@ abstract class BehaviorExtension extends CompilerExtension
 		}
 
 		return $builder->addDefinition('knp.classAnalyzer')
-			->setClass('Knp\DoctrineBehaviors\Reflection\ClassAnalyzer');
+			->setClass(ClassAnalyzer::class);
 	}
 
 
@@ -47,9 +46,9 @@ abstract class BehaviorExtension extends CompilerExtension
 		$builder = $this->getContainerBuilder();
 		$definition = $builder->addDefinition($this->prefix(md5($value)));
 
-		list($definition->factory) = Compiler::filterArguments(array(
+		list($definition->factory) = Compiler::filterArguments([
 			is_string($value) ? new Statement($value) : $value
-		));
+		]);
 
 		list($resolverClass) = (array) $builder->normalizeEntity($definition->getFactory()->getEntity());
 		if (class_exists($resolverClass)) {

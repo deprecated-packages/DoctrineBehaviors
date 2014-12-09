@@ -8,6 +8,8 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
+use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableListener;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
@@ -20,7 +22,7 @@ class SluggableExtension extends BehaviorExtension
 	 */
 	protected $default = [
 		'isRecursive' => TRUE,
-		'trait' => 'Knp\DoctrineBehaviors\Model\Sluggable\Sluggable'
+		'trait' => Sluggable::class
 	];
 
 
@@ -31,7 +33,7 @@ class SluggableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass('Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber', [
+			->setClass(SluggableListener::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']
@@ -44,7 +46,7 @@ class SluggableExtension extends BehaviorExtension
 	/**
 	 * @throws AssertionException
 	 */
-	protected function validateConfigTypes(array $config)
+	private function validateConfigTypes(array $config)
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');
