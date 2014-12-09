@@ -9,7 +9,6 @@ namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
 use Knp\DoctrineBehaviors\ORM\Loggable\LoggableListener;
-use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Loggable\LoggerCallable;

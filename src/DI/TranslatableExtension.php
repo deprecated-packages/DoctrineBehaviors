@@ -10,7 +10,6 @@ namespace Zenify\DoctrineBehaviors\DI;
 use Kdyby;
 use Knp\DoctrineBehaviors\Model\Translatable\Translation;
 use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener;
-use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
