@@ -1,6 +1,6 @@
 <?php
 
-namespace ZenifyTests\DoctrineBehaviors\DI;
+namespace Zenify\DoctrineBehaviors\Tests\DI;
 
 use Doctrine\ORM\EntityManager;
 use Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener;
@@ -12,15 +12,11 @@ use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableListener;
 use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener;
 use Nette;
 use Nette\DI\Container;
-use Tester\Assert;
-use Tester\TestCase;
+use PHPUnit_Framework_TestCase;
 use Zenify;
 
 
-$container = require_once __DIR__ . '/../../bootstrap.php';
-
-
-class DoctrineBehaviorsExtensionTest extends TestCase
+class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 {
 
 	const LISTENER_COUNT = 15;
@@ -44,30 +40,27 @@ class DoctrineBehaviorsExtensionTest extends TestCase
 	];
 
 
-	public function __construct(Container $container)
+	public function __construct()
 	{
-		$this->container = $container;
+		$this->container = (new Zenify\DoctrineBehaviors\Tests\ContainerFactory)->create();
 	}
 
 
 	public function testExtensions()
 	{
-		/** @var EntityManager $em */
-		$em = $this->container->getByType(EntityManager::class);
-		Assert::type(EntityManager::class, $em);
+		/** @var EntityManager $entityManager */
+		$entityManager = $this->container->getByType(EntityManager::class);
+		$this->assertInstanceOf(EntityManager::class, $entityManager);
 
 		$count = 0;
-		foreach ($em->getEventManager()->getListeners() as $listenerSet) {
+		foreach ($entityManager->getEventManager()->getListeners() as $listenerSet) {
 			foreach ($listenerSet as $listener) {
-				Assert::contains(get_class($listener), $this->listeners);
+				$this->assertContains(get_class($listener), $this->listeners);
 				$count++;
 			}
 		}
 
-		Assert::equal(self::LISTENER_COUNT, $count);
+		$this->assertEquals(self::LISTENER_COUNT, $count);
 	}
 
 }
-
-
-(new DoctrineBehaviorsExtensionTest($container))->run();
