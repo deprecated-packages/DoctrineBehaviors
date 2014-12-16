@@ -10,7 +10,6 @@ namespace Zenify\DoctrineBehaviors\DI;
 use Kdyby;
 use Knp\DoctrineBehaviors\Model\Blameable\Blameable;
 use Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener;
-use Nette;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Blameable\UserCallable;

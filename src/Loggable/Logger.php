@@ -12,7 +12,7 @@ interface Logger
 {
 
 	/**
-	 * @param mixed $message
+	 * @param string $message
 	 */
 	function process($message);
 
