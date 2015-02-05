@@ -11,13 +11,11 @@ install:
   - composer install --prefer-source
 
 before_script:
-  # php linter
-  - vendor/bin/parallel-lint -e php --exclude vendor .
   # php code sniffer
   - vendor/bin/phpcs src tests --standard=vendor/zenify/coding-standard/src/ZenifyCodingStandard/ruleset.xml
 
 script:
-  - vendor/bin/phpunit --coverage-clover=coverage.clover
+  - phpunit --coverage-clover=coverage.clover
 
 after_script:
   # move code coverage

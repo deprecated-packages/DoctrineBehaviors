@@ -16,11 +16,7 @@
 		"nette/di": "~2.2",
 		"nette/mail": "~2.2",
 		"nette/safe-stream": "~2.2",
-		"nette/security": "~2.2",
-		"tracy/tracy": "~2.0",
-		"zenify/coding-standard": "~3.0",
-		"jakub-onderka/php-parallel-lint": "~0.8",
-		"phpunit/phpunit": "~4.4"
+		"zenify/coding-standard": "~3.0"
 	},
 	"autoload": {
 		"psr-4": {
