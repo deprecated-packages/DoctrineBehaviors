@@ -7,6 +7,8 @@
 
 namespace Zenify\DoctrineBehaviors\Entities\Attributes;
 
+use Nette\Object;
+
 
 /**
  * @method Translatable proxyCurrentLocaleTranslation($method, $args = [])
@@ -23,9 +25,12 @@ trait Translatable
 		if (property_exists($this, $name) === FALSE && method_exists($this, 'get' . ucfirst($name)) === FALSE) {
 			$var = $this->proxyCurrentLocaleTranslation('get' . ucfirst($name));
 			return $var;
+
+		} elseif ($this instanceof Object) {
+			return parent::__get($name);
 		}
 
-		return parent::__get($name);
+		Return $this->$name;
 	}
 
 
