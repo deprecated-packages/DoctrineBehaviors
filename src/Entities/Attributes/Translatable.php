@@ -41,10 +41,13 @@ trait Translatable
 	 */
 	public function __call($method, $arguments)
 	{
-		if (strpos($method, 'get') === 0) {
-			$name = lcfirst(substr($method, 3));
-			if (property_exists($this, $name)) {
-				return parent::__call($method, $arguments);
+		if ($this instanceof Object) {
+			if (strpos($method, 'get') === 0) {
+				$name = lcfirst(substr($method, 3));
+
+				if (property_exists($this, $name)) {
+					return parent::__call($method, $arguments);
+				}
 			}
 		}
 
