@@ -7,9 +7,9 @@
 [![Latest stable](https://img.shields.io/packagist/v/zenify/doctrine-behaviors.svg?style=flat-square)](https://packagist.org/packages/zenify/doctrine-behaviors)
 
 
-Port of [KnpLabs/DoctrineBehaviors](https://github.com/KnpLabs/DoctrineBehaviors) to Nette
+Port of [KnpLabs/DoctrineBehaviors](https://github.com/KnpLabs/DoctrineBehaviors) to Nette DI
 
-Supports behaviors:
+Supported behaviors:
 
 - Blameable
 - Geocodable
