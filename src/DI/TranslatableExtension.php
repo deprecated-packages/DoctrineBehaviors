@@ -8,6 +8,7 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Translatable\Translation;
 use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber;
 use Nette\Utils\AssertionException;
@@ -48,7 +49,7 @@ class TranslatableExtension extends BehaviorExtension
 				$config['translationFetchMode']
 			])
 			->setAutowired(FALSE)
-			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 
 

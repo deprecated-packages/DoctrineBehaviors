@@ -8,6 +8,7 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\ORM\Loggable\LoggableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
@@ -41,7 +42,7 @@ class LoggableExtension extends BehaviorExtension
 				'@' . $loggerCallable->getClass()
 			])
 			->setAutowired(FALSE)
-			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 
 

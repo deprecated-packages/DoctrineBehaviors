@@ -7,10 +7,8 @@
 
 namespace Zenify\DoctrineBehaviors\Loggable;
 
-use Nette;
 
-
-class LoggerCallable extends Nette\Object
+class LoggerCallable
 {
 
 	/**

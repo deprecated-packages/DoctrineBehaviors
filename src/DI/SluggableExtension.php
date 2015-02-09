@@ -8,6 +8,7 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
 use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber;
 use Nette\Utils\AssertionException;
@@ -39,7 +40,7 @@ class SluggableExtension extends BehaviorExtension
 				$config['trait']
 			])
 			->setAutowired(FALSE)
-			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 
 

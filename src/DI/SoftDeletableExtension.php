@@ -8,6 +8,7 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\SoftDeletable\SoftDeletable;
 use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber;
 use Nette\Utils\AssertionException;
@@ -39,7 +40,7 @@ class SoftDeletableExtension extends BehaviorExtension
 				$config['trait']
 			])
 			->setAutowired(FALSE)
-			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 
 
