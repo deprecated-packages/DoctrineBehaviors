@@ -3,13 +3,13 @@
 namespace Zenify\DoctrineBehaviors\Tests\DI;
 
 use Doctrine\ORM\EntityManager;
-use Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener;
-use Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableListener;
-use Knp\DoctrineBehaviors\ORM\Loggable\LoggableListener;
-use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableListener;
-use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableListener;
-use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableListener;
-use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener;
+use Knp\DoctrineBehaviors\ORM\Blameable\BlameableSubscriber;
+use Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableSubscriber;
+use Knp\DoctrineBehaviors\ORM\Loggable\LoggableSubscriber;
+use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber;
+use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber;
+use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber;
+use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber;
 use Nette;
 use Nette\DI\Container;
 use PHPUnit_Framework_TestCase;
@@ -19,7 +19,7 @@ use Zenify;
 class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 {
 
-	const LISTENER_COUNT = 15;
+	const LISTENER_COUNT = 16;
 
 	/**
 	 * @var Container
@@ -30,13 +30,13 @@ class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 	 * @var string[]
 	 */
 	private $listeners = [
-		BlameableListener::class,
-		GeocodableListener::class,
-		LoggableListener::class,
-		SluggableListener::class,
-		SoftDeletableListener::class,
-		TimestampableListener::class,
-		TranslatableListener::class
+		BlameableSubscriber::class,
+		GeocodableSubscriber::class,
+		LoggableSubscriber::class,
+		SluggableSubscriber::class,
+		SoftDeletableSubscriber::class,
+		TimestampableSubscriber::class,
+		TranslatableSubscriber::class
 	];
 
 

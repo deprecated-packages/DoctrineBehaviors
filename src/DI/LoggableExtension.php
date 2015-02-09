@@ -8,7 +8,7 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
-use Knp\DoctrineBehaviors\ORM\Loggable\LoggableListener;
+use Knp\DoctrineBehaviors\ORM\Loggable\LoggableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Loggable\LoggerCallable;
@@ -35,7 +35,7 @@ class LoggableExtension extends BehaviorExtension
 		$loggerCallable = $this->buildDefinition($config['loggerCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass(LoggableListener::class, [
+			->setClass(LoggableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				'@' . $loggerCallable->getClass()

@@ -9,7 +9,7 @@ namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
 use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
-use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableListener;
+use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
@@ -33,7 +33,7 @@ class SluggableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass(SluggableListener::class, [
+			->setClass(SluggableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']

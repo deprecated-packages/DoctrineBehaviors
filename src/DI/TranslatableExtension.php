@@ -9,7 +9,7 @@ namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
 use Knp\DoctrineBehaviors\Model\Translatable\Translation;
-use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableListener;
+use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
@@ -38,7 +38,7 @@ class TranslatableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass(TranslatableListener::class, [
+			->setClass(TranslatableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['currentLocaleCallable'],

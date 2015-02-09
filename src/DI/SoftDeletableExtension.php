@@ -9,7 +9,7 @@ namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
 use Knp\DoctrineBehaviors\Model\SoftDeletable\SoftDeletable;
-use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableListener;
+use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
@@ -33,7 +33,7 @@ class SoftDeletableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass(SoftDeletableListener::class, [
+			->setClass(SoftDeletableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']

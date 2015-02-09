@@ -9,7 +9,7 @@ namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
-use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableListener;
+use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
@@ -33,7 +33,7 @@ class TimestampableExtension extends BehaviorExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass(TimestampableListener::class, [
+			->setClass(TimestampableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait']

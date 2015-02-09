@@ -8,8 +8,9 @@
 namespace Zenify\DoctrineBehaviors\DI;
 
 use Kdyby;
+use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Blameable\Blameable;
-use Knp\DoctrineBehaviors\ORM\Blameable\BlameableListener;
+use Knp\DoctrineBehaviors\ORM\Blameable\BlameableSubscriber;
 use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Blameable\UserCallable;
@@ -38,7 +39,7 @@ class BlameableExtension extends BehaviorExtension
 		$userCallable = $this->buildDefinition($config['userCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
-			->setClass(BlameableListener::class, [
+			->setClass(BlameableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['trait'],
@@ -46,7 +47,7 @@ class BlameableExtension extends BehaviorExtension
 				$config['userEntity']
 			])
 			->setAutowired(FALSE)
-			->addTag(Kdyby\Events\DI\EventsExtension::TAG_SUBSCRIBER);
+			->addTag(EventsExtension::TAG_SUBSCRIBER);
 	}
 
 
