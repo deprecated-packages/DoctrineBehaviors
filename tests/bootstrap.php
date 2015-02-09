@@ -1,34 +1,13 @@
 <?php
 
-namespace Zenify\DoctrineBehaviors\Tests;
-
-use Nette\Configurator;
-use Nette\DI\Container;
+include __DIR__ . '/../vendor/autoload.php';
 
 
-class ContainerFactory
-{
-
-	/**
-	 * @return Container
-	 */
-	public function create()
-	{
-		$configurator = new Configurator;
-		$configurator->setTempDirectory($this->createAndReturnTempDir());
-		$configurator->addConfig(__DIR__ . '/config/default.neon');
-		return $configurator->createContainer();
-	}
+$tempDir = __DIR__ . '/temp/' . getmypid();
+define('TEMP_DIR', $tempDir);
+@mkdir($tempDir, 0777, TRUE);
 
 
-	/**
-	 * @return string
-	 */
-	private function createAndReturnTempDir()
-	{
-		$tempDir = __DIR__ . '/temp';
-		@mkdir($tempDir, 0777, TRUE);
-		return $tempDir;
-	}
-
-}
+register_shutdown_function(function() {
+	Nette\Utils\FileSystem::delete(__DIR__ . '/temp');
+});
