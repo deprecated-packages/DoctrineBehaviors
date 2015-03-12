@@ -1,4 +1,4 @@
-# Zenify/DoctrineBehaviors
+# Doctrine Behaviors
 
 [![Build Status](https://img.shields.io/travis/Zenify/DoctrineBehaviors.svg?style=flat-square)](https://travis-ci.org/Zenify/DoctrineBehaviors)
 [![Quality Score](https://img.shields.io/scrutinizer/g/Zenify/DoctrineBehaviors.svg?style=flat-square)](https://scrutinizer-ci.com/g/Zenify/DoctrineBehaviors)
@@ -22,9 +22,9 @@ Supported behaviors:
 For implementation to entities, check [tests](https://github.com/KnpLabs/DoctrineBehaviors/tree/master/tests/fixtures/BehaviorFixtures/ORM).
 
 
-## Installation
+## Install
 
-Install the latest version via Composer:
+Via Composer:
 
 ```sh
 $ composer require zenify/doctrine-behaviors
@@ -39,7 +39,9 @@ extensions:
 ```
 
 
-## Translatable
+## Usage
+
+### Translatable
 
 Setup your translator locale callback in `config.neon`:
 
@@ -85,7 +87,7 @@ For deeper knowledge see test for:
 - [theirs use](https://github.com/KnpLabs/DoctrineBehaviors/blob/master/tests/Knp/DoctrineBehaviors/ORM/TranslatableTest.php)
 
 
-## Timestampable
+### Timestampable
 
 Place trait to your entity to ad `$createdAt` and `$updatedAt` properties:
 

@@ -15,8 +15,7 @@
 		"nette/bootstrap": "~2.2",
 		"nette/di": "~2.2",
 		"nette/mail": "~2.2",
-		"nette/safe-stream": "~2.2",
-		"zenify/coding-standard": "~3.0"
+		"nette/safe-stream": "~2.2"
 	},
 	"autoload": {
 		"psr-4": {
