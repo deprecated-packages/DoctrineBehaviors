@@ -14,6 +14,7 @@ use Nette;
 use Nette\DI\Container;
 use PHPUnit_Framework_TestCase;
 use Zenify;
+use Zenify\DoctrineBehaviors\Tests\ContainerFactory;
 
 
 class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
@@ -42,7 +43,7 @@ class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 
 	public function __construct()
 	{
-		$this->container = (new Zenify\DoctrineBehaviors\Tests\ContainerFactory)->create();
+		$this->container = (new ContainerFactory)->create();
 	}
 
 

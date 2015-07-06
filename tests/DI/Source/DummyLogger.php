@@ -2,14 +2,14 @@
 
 namespace Zenify\DoctrineBehaviors\Tests\DI\Source;
 
-use Zenify\DoctrineBehaviors\Loggable\Logger;
+use Zenify\DoctrineBehaviors\Contract\Loggable\LoggerInterface;
 
 
-class DummyLogger implements Logger
+class DummyLogger implements LoggerInterface
 {
 
 	/**
-	 * @param mixed $message
+	 * {@inheritdoc}
 	 */
 	public function process($message)
 	{
