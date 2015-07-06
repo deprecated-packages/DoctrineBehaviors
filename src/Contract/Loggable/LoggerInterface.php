@@ -5,10 +5,10 @@
  * Copyright (c) 2012 Tomas Votruba (http://tomasvotruba.cz)
  */
 
-namespace Zenify\DoctrineBehaviors\Loggable;
+namespace Zenify\DoctrineBehaviors\Contract\Loggable;
 
 
-interface Logger
+interface LoggerInterface
 {
 
 	/**

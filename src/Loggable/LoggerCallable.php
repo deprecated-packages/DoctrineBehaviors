@@ -7,17 +7,19 @@
 
 namespace Zenify\DoctrineBehaviors\Loggable;
 
+use Zenify\DoctrineBehaviors\Contract\Loggable\LoggerInterface;
+
 
 class LoggerCallable
 {
 
 	/**
-	 * @var Logger
+	 * @var LoggerInterface
 	 */
 	private $logger;
 
 
-	public function __construct(Logger $logger)
+	public function __construct(LoggerInterface $logger)
 	{
 		$this->logger = $logger;
 	}
