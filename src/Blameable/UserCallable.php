@@ -7,11 +7,10 @@
 
 namespace Zenify\DoctrineBehaviors\Blameable;
 
-use Nette;
 use Nette\Security\User;
 
 
-class UserCallable extends Nette\Object
+class UserCallable
 {
 
 	/**
