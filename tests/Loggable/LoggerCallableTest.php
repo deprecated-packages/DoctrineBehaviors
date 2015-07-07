@@ -25,7 +25,7 @@ class LoggerCallableTest extends PHPUnit_Framework_TestCase
 	{
 		$loggerMock = $this->prophesize(LoggerInterface::class);
 		$that = $this;
-		$loggerMock->process('message')->will(function($args) use ($that) {
+		$loggerMock->process('message')->will(function ($args) use ($that) {
 			$that->message = 'someMessage';
 		});
 		$this->loggerCallable = new LoggerCallable($loggerMock->reveal());
