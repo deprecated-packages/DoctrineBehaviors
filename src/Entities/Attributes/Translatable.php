@@ -23,14 +23,17 @@ trait Translatable
 	public function &__get($name)
 	{
 		if (property_exists($this, $name) === FALSE && method_exists($this, 'get' . ucfirst($name)) === FALSE) {
-			$var = $this->proxyCurrentLocaleTranslation('get' . ucfirst($name));
-			return $var;
+			$prefix = 'get';
+			if (preg_match('/^(is|has|should)/i', $name)) {
+				$prefix = '';
+			}
+			return $this->proxyCurrentLocaleTranslation($prefix . ucfirst($name));
 
 		} elseif ($this instanceof Object) {
 			return parent::__get($name);
 		}
 
-		Return $this->$name;
+		return $this->$name;
 	}
 
 
