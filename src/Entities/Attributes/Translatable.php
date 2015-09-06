@@ -22,11 +22,12 @@ trait Translatable
 	 */
 	public function &__get($name)
 	{
-		if (property_exists($this, $name) === FALSE && method_exists($this, 'get' . ucfirst($name)) === FALSE) {
-			$prefix = 'get';
-			if (preg_match('/^(is|has|should)/i', $name)) {
-				$prefix = '';
-			}
+		$prefix = 'get';
+		if (preg_match('/^(is|has|should)/i', $name)) {
+			$prefix = '';
+		}
+
+		if (property_exists($this, $name) === FALSE && method_exists($this, $prefix . ucfirst($name)) === FALSE) {
 			return $this->proxyCurrentLocaleTranslation($prefix . ucfirst($name));
 
 		} elseif ($this instanceof Object) {
