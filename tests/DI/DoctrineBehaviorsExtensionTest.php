@@ -20,7 +20,10 @@ use Zenify\DoctrineBehaviors\Tests\ContainerFactory;
 class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 {
 
-	const LISTENER_COUNT = 16;
+	/**
+	 * @var int
+	 */
+	const LISTENER_COUNT = 18;
 
 	/**
 	 * @var Container

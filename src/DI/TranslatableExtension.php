@@ -25,6 +25,7 @@ class TranslatableExtension extends BehaviorExtension
 	private $default = [
 		'isRecursive' => TRUE,
 		'currentLocaleCallable' => NULL,
+		'defaultLocaleCallable' => NULL,
 		'translatableTrait' => Translatable::class,
 		'translationTrait' => Translation::class,
 		'translatableFetchMode' => 'LAZY',
@@ -43,6 +44,7 @@ class TranslatableExtension extends BehaviorExtension
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
 				$config['currentLocaleCallable'],
+				$config['defaultLocaleCallable'],
 				$config['translatableTrait'],
 				$config['translationTrait'],
 				$config['translatableFetchMode'],
