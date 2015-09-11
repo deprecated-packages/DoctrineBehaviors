@@ -17,7 +17,7 @@ trait Translatable
 	 * @param string
 	 * @return mixed
 	 */
-	public function __get($name)
+	public function &__get($name) // "&" intentionally due to compatibility with Nette\Object
 	{
 		$prefix = 'get';
 		if (preg_match('/^(is|has|should)/i', $name)) {
@@ -27,7 +27,9 @@ trait Translatable
 		$methodName = $prefix . ucfirst($name);
 
 		if (property_exists($this, $name) === FALSE && method_exists($this, $methodName) === FALSE) {
-			return $this->proxyCurrentLocaleTranslation($methodName);
+			$value = $this->proxyCurrentLocaleTranslation($methodName);
+			// variable $value intentionally, due to & compatibility
+			return $value;
 		}
 
 		return $this->$name;
