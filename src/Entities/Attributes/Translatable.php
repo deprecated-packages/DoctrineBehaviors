@@ -28,7 +28,8 @@ trait Translatable
 		}
 
 		if (property_exists($this, $name) === FALSE && method_exists($this, $prefix . ucfirst($name)) === FALSE) {
-			return $this->proxyCurrentLocaleTranslation($prefix . ucfirst($name));
+			$result = $this->proxyCurrentLocaleTranslation($prefix . ucfirst($name));
+			return $result;
 
 		} elseif ($this instanceof Object) {
 			return parent::__get($name);
