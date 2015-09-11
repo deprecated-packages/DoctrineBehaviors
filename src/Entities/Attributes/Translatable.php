@@ -7,9 +7,6 @@
 
 namespace Zenify\DoctrineBehaviors\Entities\Attributes;
 
-use Nette\Object;
-
-
 /**
  * @method Translatable proxyCurrentLocaleTranslation($method, $args = [])
  */
@@ -20,19 +17,17 @@ trait Translatable
 	 * @param string
 	 * @return mixed
 	 */
-	public function &__get($name)
+	public function __get($name)
 	{
 		$prefix = 'get';
 		if (preg_match('/^(is|has|should)/i', $name)) {
 			$prefix = '';
 		}
 
-		if (property_exists($this, $name) === FALSE && method_exists($this, $prefix . ucfirst($name)) === FALSE) {
-			$result = $this->proxyCurrentLocaleTranslation($prefix . ucfirst($name));
-			return $result;
+		$methodName = $prefix . ucfirst($name);
 
-		} elseif ($this instanceof Object) {
-			return parent::__get($name);
+		if (property_exists($this, $name) === FALSE && method_exists($this, $methodName) === FALSE) {
+			return $this->proxyCurrentLocaleTranslation($methodName);
 		}
 
 		return $this->$name;
@@ -46,16 +41,6 @@ trait Translatable
 	 */
 	public function __call($method, $arguments)
 	{
-		if ($this instanceof Object) {
-			if (strpos($method, 'get') === 0) {
-				$name = lcfirst(substr($method, 3));
-
-				if (property_exists($this, $name)) {
-					return parent::__call($method, $arguments);
-				}
-			}
-		}
-
 		return $this->proxyCurrentLocaleTranslation($method, $arguments);
 	}
 
