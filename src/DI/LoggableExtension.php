@@ -7,7 +7,6 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\ORM\Loggable\LoggableSubscriber;
 use Nette\Utils\AssertionException;
@@ -15,7 +14,7 @@ use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Loggable\LoggerCallable;
 
 
-class LoggableExtension extends AbstractBehaviorExtension
+final class LoggableExtension extends AbstractBehaviorExtension
 {
 
 	/**
@@ -27,6 +26,9 @@ class LoggableExtension extends AbstractBehaviorExtension
 	];
 
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);

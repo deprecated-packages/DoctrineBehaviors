@@ -7,7 +7,6 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber;
@@ -15,7 +14,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class TimestampableExtension extends AbstractBehaviorExtension
+final class TimestampableExtension extends AbstractBehaviorExtension
 {
 
 	/**

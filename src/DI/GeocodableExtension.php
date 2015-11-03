@@ -7,7 +7,6 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Geocodable\Geocodable;
 use Knp\DoctrineBehaviors\ORM\Geocodable\GeocodableSubscriber;
@@ -15,7 +14,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class GeocodableExtension extends AbstractBehaviorExtension
+final class GeocodableExtension extends AbstractBehaviorExtension
 {
 
 	/**
@@ -28,6 +27,9 @@ class GeocodableExtension extends AbstractBehaviorExtension
 	];
 
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);

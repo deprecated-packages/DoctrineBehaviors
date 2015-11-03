@@ -15,7 +15,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class SoftDeletableExtension extends AbstractBehaviorExtension
+final class SoftDeletableExtension extends AbstractBehaviorExtension
 {
 
 	/**
@@ -27,6 +27,9 @@ class SoftDeletableExtension extends AbstractBehaviorExtension
 	];
 
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);

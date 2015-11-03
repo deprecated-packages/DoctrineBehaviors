@@ -7,7 +7,6 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Blameable\Blameable;
 use Knp\DoctrineBehaviors\ORM\Blameable\BlameableSubscriber;
@@ -16,7 +15,7 @@ use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Blameable\UserCallable;
 
 
-class BlameableExtension extends AbstractBehaviorExtension
+final class BlameableExtension extends AbstractBehaviorExtension
 {
 
 	/**
@@ -30,6 +29,9 @@ class BlameableExtension extends AbstractBehaviorExtension
 	];
 
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);

@@ -7,7 +7,6 @@
 
 namespace Zenify\DoctrineBehaviors\DI;
 
-use Kdyby;
 use Kdyby\Events\DI\EventsExtension;
 use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
 use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber;
@@ -15,7 +14,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class SluggableExtension extends AbstractBehaviorExtension
+final class SluggableExtension extends AbstractBehaviorExtension
 {
 
 	/**

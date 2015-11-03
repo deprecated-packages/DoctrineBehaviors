@@ -16,7 +16,7 @@ use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
 
 
-class TranslatableExtension extends AbstractBehaviorExtension
+final class TranslatableExtension extends AbstractBehaviorExtension
 {
 
 	/**
@@ -33,6 +33,9 @@ class TranslatableExtension extends AbstractBehaviorExtension
 	];
 
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);
