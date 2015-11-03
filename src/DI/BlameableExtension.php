@@ -38,7 +38,7 @@ final class BlameableExtension extends AbstractBehaviorExtension
 		$this->validateConfigTypes($config);
 		$builder = $this->getContainerBuilder();
 
-		$userCallable = $this->buildDefinition($config['userCallable']);
+		$userCallable = $this->buildDefinitionFromCallable($config['userCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass(BlameableSubscriber::class, [

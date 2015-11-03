@@ -36,7 +36,7 @@ final class GeocodableExtension extends AbstractBehaviorExtension
 		$this->validateConfigTypes($config);
 		$builder = $this->getContainerBuilder();
 
-		$geolocationCallable = $this->buildDefinition($config['geolocationCallable']);
+		$geolocationCallable = $this->buildDefinitionFromCallable($config['geolocationCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass(GeocodableSubscriber::class, [

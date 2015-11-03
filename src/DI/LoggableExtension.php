@@ -35,7 +35,7 @@ final class LoggableExtension extends AbstractBehaviorExtension
 		$this->validateConfigTypes($config);
 		$builder = $this->getContainerBuilder();
 
-		$loggerCallable = $this->buildDefinition($config['loggerCallable']);
+		$loggerCallable = $this->buildDefinitionFromCallable($config['loggerCallable']);
 
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass(LoggableSubscriber::class, [
