@@ -23,7 +23,7 @@ class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @var int
 	 */
-	const LISTENER_COUNT = 18;
+	const LISTENER_COUNT = 19;
 
 	/**
 	 * @var Container
