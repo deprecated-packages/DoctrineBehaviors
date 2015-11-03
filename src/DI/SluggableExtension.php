@@ -20,7 +20,7 @@ final class SluggableExtension extends AbstractBehaviorExtension
 	/**
 	 * @var array
 	 */
-	protected $default = [
+	private $default = [
 		'isRecursive' => TRUE,
 		'trait' => Sluggable::class
 	];
