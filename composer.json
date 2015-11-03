@@ -13,9 +13,7 @@
 	"require-dev": {
 		"kdyby/doctrine": "~3.0",
 		"nette/bootstrap": "~2.3",
-		"nette/di": "~2.3",
-		"nette/mail": "~2.3",
-		"nette/safe-stream": "~2.3"
+		"nette/di": "~2.3"
 	},
 	"autoload": {
 		"psr-4": {
