@@ -14,7 +14,7 @@ use Nette\DI\ServiceDefinition;
 use Nette\DI\Statement;
 
 
-abstract class BehaviorExtension extends CompilerExtension
+abstract class AbstractBehaviorExtension extends CompilerExtension
 {
 
 	/**

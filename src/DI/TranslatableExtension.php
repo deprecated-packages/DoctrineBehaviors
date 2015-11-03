@@ -16,7 +16,7 @@ use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable;
 
 
-class TranslatableExtension extends BehaviorExtension
+class TranslatableExtension extends AbstractBehaviorExtension
 {
 
 	/**

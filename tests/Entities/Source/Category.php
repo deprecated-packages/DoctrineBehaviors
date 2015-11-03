@@ -26,6 +26,10 @@ class Category
 	private $id;
 
 
+	/**
+	 * @param string $name
+	 * @param bool $isActive
+	 */
 	public function __construct($name, $isActive)
 	{
 		$this->proxyCurrentLocaleTranslation('setName', [$name]);

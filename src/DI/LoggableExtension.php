@@ -15,7 +15,7 @@ use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Loggable\LoggerCallable;
 
 
-class LoggableExtension extends BehaviorExtension
+class LoggableExtension extends AbstractBehaviorExtension
 {
 
 	/**

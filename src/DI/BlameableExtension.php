@@ -16,7 +16,7 @@ use Nette\Utils\Validators;
 use Zenify\DoctrineBehaviors\Blameable\UserCallable;
 
 
-class BlameableExtension extends BehaviorExtension
+class BlameableExtension extends AbstractBehaviorExtension
 {
 
 	/**

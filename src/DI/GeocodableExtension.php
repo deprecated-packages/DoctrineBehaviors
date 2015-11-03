@@ -15,7 +15,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class GeocodableExtension extends BehaviorExtension
+class GeocodableExtension extends AbstractBehaviorExtension
 {
 
 	/**

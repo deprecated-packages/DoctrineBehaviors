@@ -15,7 +15,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class SluggableExtension extends BehaviorExtension
+class SluggableExtension extends AbstractBehaviorExtension
 {
 
 	/**

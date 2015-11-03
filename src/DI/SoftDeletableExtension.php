@@ -15,7 +15,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class SoftDeletableExtension extends BehaviorExtension
+class SoftDeletableExtension extends AbstractBehaviorExtension
 {
 
 	/**

@@ -15,7 +15,7 @@ use Nette\Utils\AssertionException;
 use Nette\Utils\Validators;
 
 
-class TimestampableExtension extends BehaviorExtension
+class TimestampableExtension extends AbstractBehaviorExtension
 {
 
 	/**
