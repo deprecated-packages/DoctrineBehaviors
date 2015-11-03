@@ -34,20 +34,20 @@ abstract class AbstractBehaviorExtension extends CompilerExtension
 
 
 	/**
-	 * @param string $class
+	 * @param string $callable
 	 * @return ServiceDefinition|NULL
 	 */
-	protected function buildDefinitionFromCallable($class)
+	protected function buildDefinitionFromCallable($callable)
 	{
-		if ($class === NULL) {
+		if ($callable === NULL) {
 			return NULL;
 		}
 
 		$builder = $this->getContainerBuilder();
-		$definition = $builder->addDefinition($this->prefix(md5($class)));
+		$definition = $builder->addDefinition($this->prefix(md5($callable)));
 
 		list($definition->factory) = Compiler::filterArguments([
-			is_string($class) ? new Statement($class) : $class
+			is_string($callable) ? new Statement($callable) : $callable
 		]);
 
 		list($resolverClass) = (array) $builder->normalizeEntity($definition->getFactory()->getEntity());
