@@ -22,7 +22,8 @@ final class TimestampableExtension extends AbstractBehaviorExtension
 	 */
 	private $default = [
 		'isRecursive' => TRUE,
-		'trait' => Timestampable::class
+		'trait' => Timestampable::class,
+		'dbFieldType' => 'datetime',
 	];
 
 
@@ -36,7 +37,8 @@ final class TimestampableExtension extends AbstractBehaviorExtension
 			->setClass(TimestampableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
 				$config['isRecursive'],
-				$config['trait']
+				$config['trait'],
+				$config['dbFieldType'],
 			])
 			->setAutowired(FALSE)
 			->addTag(EventsExtension::TAG_SUBSCRIBER);
@@ -50,6 +52,7 @@ final class TimestampableExtension extends AbstractBehaviorExtension
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');
+		Validators::assertField($config, 'dbFieldType', 'string');
 	}
 
 }
