@@ -33,6 +33,11 @@ trait Translatable
 			return $value;
 		}
 
+		if (method_exists($this, $methodName)) {
+			$value = $this->$methodName();
+			return $value;
+		}
+
 		return $this->$name;
 	}
 
