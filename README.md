@@ -18,6 +18,7 @@ Supported behaviors:
 - SoftDeletable
 - Translatable
 - Timestampable
+- Tree
 
 For implementation to entities, check [tests](https://github.com/KnpLabs/DoctrineBehaviors/tree/master/tests/fixtures/BehaviorFixtures/ORM).
 

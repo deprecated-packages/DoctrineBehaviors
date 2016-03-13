@@ -15,6 +15,7 @@ extensions:
 	- Zenify\DoctrineBehaviors\DI\SoftDeletableExtension
 	- Zenify\DoctrineBehaviors\DI\TimestampableExtension
 	- Zenify\DoctrineBehaviors\DI\TranslatableExtension
+	- Zenify\DoctrineBehaviors\DI\TreeExtension
 
 
 doctrine:

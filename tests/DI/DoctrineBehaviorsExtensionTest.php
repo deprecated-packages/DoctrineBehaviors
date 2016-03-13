@@ -10,6 +10,7 @@ use Knp\DoctrineBehaviors\ORM\Sluggable\SluggableSubscriber;
 use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber;
 use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber;
 use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber;
+use Knp\DoctrineBehaviors\ORM\Tree\TreeSubscriber;
 use Nette;
 use Nette\DI\Container;
 use PHPUnit_Framework_TestCase;
@@ -23,7 +24,7 @@ class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @var int
 	 */
-	const LISTENER_COUNT = 19;
+	const LISTENER_COUNT = 20;
 
 	/**
 	 * @var Container
@@ -40,7 +41,8 @@ class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
 		SluggableSubscriber::class,
 		SoftDeletableSubscriber::class,
 		TimestampableSubscriber::class,
-		TranslatableSubscriber::class
+		TranslatableSubscriber::class,
+		TreeSubscriber::class,
 	];
 
 
