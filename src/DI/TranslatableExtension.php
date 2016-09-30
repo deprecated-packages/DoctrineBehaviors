@@ -23,7 +23,6 @@ final class TranslatableExtension extends AbstractBehaviorExtension
 	 * @var array
 	 */
 	private $default = [
-		'isRecursive' => TRUE,
 		'currentLocaleCallable' => NULL,
 		'defaultLocaleCallable' => NULL,
 		'translatableTrait' => Translatable::class,
@@ -45,7 +44,6 @@ final class TranslatableExtension extends AbstractBehaviorExtension
 		$builder->addDefinition($this->prefix('listener'))
 			->setClass(TranslatableSubscriber::class, [
 				'@' . $this->getClassAnalyzer()->getClass(),
-				$config['isRecursive'],
 				$config['currentLocaleCallable'],
 				$config['defaultLocaleCallable'],
 				$config['translatableTrait'],
@@ -63,7 +61,6 @@ final class TranslatableExtension extends AbstractBehaviorExtension
 	 */
 	private function validateConfigTypes(array $config)
 	{
-		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'currentLocaleCallable', NULL | 'array');
 		Validators::assertField($config, 'translatableTrait', 'type');
 		Validators::assertField($config, 'translationTrait', 'type');
