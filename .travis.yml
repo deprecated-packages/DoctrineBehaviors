@@ -7,6 +7,10 @@ php:
   - 7.0
   - hhvm
 
+matrix:
+  allow_failures:
+    - php: hhvm
+
 install:
   - composer create-project --prefer-source --dev --no-interaction zenify/ci vendor/ci @dev
   - . vendor/ci/travis/coverage-init.sh
