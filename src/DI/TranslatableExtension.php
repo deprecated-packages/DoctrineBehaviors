@@ -61,7 +61,7 @@ final class TranslatableExtension extends AbstractBehaviorExtension
 	 */
 	private function validateConfigTypes(array $config)
 	{
-		Validators::assertField($config, 'currentLocaleCallable', NULL | 'array');
+		Validators::assertField($config, 'currentLocaleCallable', 'null|array');
 		Validators::assertField($config, 'translatableTrait', 'type');
 		Validators::assertField($config, 'translationTrait', 'type');
 		Validators::assertField($config, 'translatableFetchMode', 'string');
