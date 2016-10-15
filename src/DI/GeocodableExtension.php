@@ -57,7 +57,7 @@ final class GeocodableExtension extends AbstractBehaviorExtension
 	{
 		Validators::assertField($config, 'isRecursive', 'bool');
 		Validators::assertField($config, 'trait', 'type');
-		Validators::assertField($config, 'geolocationCallable', NULL | 'type');
+		Validators::assertField($config, 'geolocationCallable', 'null|type');
 	}
 
 }
