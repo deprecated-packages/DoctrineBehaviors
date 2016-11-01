@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests\Entities\Source;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 use Zenify\DoctrineBehaviors\Entities\Attributes\Translatable as ZenifyTranslatable;

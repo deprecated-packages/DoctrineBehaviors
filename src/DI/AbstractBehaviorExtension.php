@@ -1,6 +1,8 @@
 <?php
 
-/**
+declare(strict_types=1);
+
+/*
  * This file is part of Zenify
  * Copyright (c) 2012 Tomas Votruba (http://tomasvotruba.cz)
  */
@@ -17,10 +19,7 @@ use Nette\DI\Statement;
 abstract class AbstractBehaviorExtension extends CompilerExtension
 {
 
-	/**
-	 * @return ServiceDefinition
-	 */
-	protected function getClassAnalyzer()
+	protected function getClassAnalyzer() : ServiceDefinition
 	{
 		$builder = $this->getContainerBuilder();
 
@@ -34,10 +33,9 @@ abstract class AbstractBehaviorExtension extends CompilerExtension
 
 
 	/**
-	 * @param string $callable
 	 * @return ServiceDefinition|NULL
 	 */
-	protected function buildDefinitionFromCallable($callable)
+	protected function buildDefinitionFromCallable(string $callable = NULL)
 	{
 		if ($callable === NULL) {
 			return NULL;

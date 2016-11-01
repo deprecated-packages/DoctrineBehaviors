@@ -1,6 +1,8 @@
 <?php
 
-/**
+declare(strict_types=1);
+
+/*
  * This file is part of Zenify
  * Copyright (c) 2012 Tomas Votruba (http://tomasvotruba.cz)
  */
@@ -27,9 +29,6 @@ final class GeocodableExtension extends AbstractBehaviorExtension
 	];
 
 
-	/**
-	 * {@inheritdoc}
-	 */
 	public function loadConfiguration()
 	{
 		$config = $this->getConfig($this->default);

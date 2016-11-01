@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests\Entities\Source;
 
 use Doctrine\Common\Collections\ArrayCollection;

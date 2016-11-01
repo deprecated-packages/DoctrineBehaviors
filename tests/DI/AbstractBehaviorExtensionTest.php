@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests\DI;
 
 use Knp\DoctrineBehaviors\ORM\Loggable\LoggerCallable;
 use Knp\DoctrineBehaviors\Reflection\ClassAnalyzer;
 use Nette\DI\Compiler;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Zenify\DoctrineBehaviors\DI\AbstractBehaviorExtension;
-use Zenify\DoctrineBehaviors\Exception\DI\MissingMethodException;
 use Zenify\DoctrineBehaviors\Tests\DI\AbstractBehaviorExtensionSource\SomeBehaviorExtension;
-use Zenify\DoctrineBehaviors\Tests\DI\AbstractBehaviorExtensionSource\SomeClass;
 
 
-final class AbstractBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
+final class AbstractBehaviorsExtensionTest extends TestCase
 {
 
 	/**

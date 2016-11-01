@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests\DI\AbstractBehaviorExtensionSource;
 
 use Nette\DI\ServiceDefinition;
@@ -9,17 +11,14 @@ use Zenify\DoctrineBehaviors\DI\AbstractBehaviorExtension;
 final class SomeBehaviorExtension extends AbstractBehaviorExtension
 {
 
-	/**
-	 * @return ServiceDefinition
-	 */
-	public function getClassAnalyzerPublic()
+	public function getClassAnalyzerPublic() : ServiceDefinition
 	{
 		return parent::getClassAnalyzer();
 	}
 
 
 	/**
-	 * @param string $value
+	 * @param string|NULL
 	 * @return ServiceDefinition|NULL
 	 */
 	public function buildDefinitionFromCallablePublic($value)

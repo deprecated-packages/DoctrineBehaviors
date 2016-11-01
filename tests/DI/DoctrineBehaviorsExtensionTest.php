@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests\DI;
 
 use Doctrine\ORM\EntityManager;
@@ -11,14 +13,13 @@ use Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletableSubscriber;
 use Knp\DoctrineBehaviors\ORM\Timestampable\TimestampableSubscriber;
 use Knp\DoctrineBehaviors\ORM\Translatable\TranslatableSubscriber;
 use Knp\DoctrineBehaviors\ORM\Tree\TreeSubscriber;
-use Nette;
 use Nette\DI\Container;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Zenify;
 use Zenify\DoctrineBehaviors\Tests\ContainerFactory;
 
 
-class DoctrineBehaviorsExtensionTest extends PHPUnit_Framework_TestCase
+final class DoctrineBehaviorsExtensionTest extends TestCase
 {
 
 	/**
