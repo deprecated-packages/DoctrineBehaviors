@@ -1,23 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests;
 
 use Nette\Configurator;
 use Nette\DI\Container;
+use Nette\Utils\FileSystem;
 
 
-class ContainerFactory
+final class ContainerFactory
 {
 
-	/**
-	 * @return Container
-	 */
-	public function create()
+	public function create() : Container
 	{
 		$configurator = new Configurator;
-		$configurator->setTempDirectory(TEMP_DIR);
+		$configurator->setTempDirectory($this->createAndReturnTempDir());
 		$configurator->addConfig(__DIR__ . '/config/default.neon');
 		return $configurator->createContainer();
+	}
+
+
+	private function createAndReturnTempDir() : string
+	{
+		$tempDir = sys_get_temp_dir() . '/doctrine-behaviors';
+		FileSystem::delete($tempDir);
+		FileSystem::createDir($tempDir);
+		return $tempDir;
 	}
 
 }

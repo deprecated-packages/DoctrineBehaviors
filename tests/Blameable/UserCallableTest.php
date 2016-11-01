@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Zenify\DoctrineBehaviors\Tests\Blameable;
 
 use Nette\Security\User;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Zenify\DoctrineBehaviors\Blameable\UserCallable;
 
 
-class UserCallableTest extends PHPUnit_Framework_TestCase
+final class UserCallableTest extends TestCase
 {
 
 	/**
-	 * @var ObjectProphecy
+	 * @var ObjectProphecy|User
 	 */
 	private $userMock;
 
