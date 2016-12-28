@@ -12,7 +12,7 @@ use Zenify\DoctrineBehaviors\DI\AbstractBehaviorExtension;
 use Zenify\DoctrineBehaviors\Tests\DI\AbstractBehaviorExtensionSource\SomeBehaviorExtension;
 
 
-final class AbstractBehaviorsExtensionTest extends TestCase
+final class AbstractBehaviorExtensionTest extends TestCase
 {
 
 	/**

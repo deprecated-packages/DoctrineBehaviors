@@ -28,11 +28,6 @@ final class DoctrineBehaviorsExtensionTest extends TestCase
 	const LISTENER_COUNT = 20;
 
 	/**
-	 * @var Container
-	 */
-	private $container;
-
-	/**
 	 * @var string[]
 	 */
 	private $listeners = [
@@ -47,16 +42,12 @@ final class DoctrineBehaviorsExtensionTest extends TestCase
 	];
 
 
-	public function __construct()
-	{
-		$this->container = (new ContainerFactory)->create();
-	}
-
-
 	public function testExtensions()
 	{
+		$container = (new ContainerFactory)->create();
+
 		/** @var EntityManager $entityManager */
-		$entityManager = $this->container->getByType(EntityManager::class);
+		$entityManager = $container->getByType(EntityManager::class);
 		$this->assertInstanceOf(EntityManager::class, $entityManager);
 
 		$count = 0;

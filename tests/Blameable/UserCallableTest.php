@@ -24,7 +24,7 @@ final class UserCallableTest extends TestCase
 	private $userCallable;
 
 
-	public function __construct()
+	protected function setUp()
 	{
 		$this->userMock = $this->prophesize(User::class);
 		$this->userMock->getId()->willReturn(1);
