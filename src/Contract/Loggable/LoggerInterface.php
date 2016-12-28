@@ -13,9 +13,6 @@ namespace Zenify\DoctrineBehaviors\Contract\Loggable;
 interface LoggerInterface
 {
 
-	/**
-	 * @param string $message
-	 */
-	function process($message);
+	function process(string $message);
 
 }
